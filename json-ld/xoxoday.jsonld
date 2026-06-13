@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "xoxo": "https://developers.xoxoday.com/vocab#",
+    "name": "name",
+    "description": "description",
+    "url": "url",
+    "provider": "provider",
+    "offers": "offers",
+    "areaServed": "areaServed",
+    "currenciesAccepted": "currenciesAccepted",
+    "productId": "xoxo:productId",
+    "denomination": "xoxo:denomination",
+    "deliveryType": "xoxo:deliveryType",
+    "rewardType": "xoxo:rewardType",
+    "pointsBalance": "xoxo:pointsBalance",
+    "campaignId": "xoxo:campaignId",
+    "orderId": "xoxo:orderId",
+    "poNumber": "xoxo:poNumber",
+    "voucherCode": "xoxo:voucherCode"
+  },
+  "@type": "WebAPI",
+  "name": "Xoxoday Plum Rewards API",
+  "description": "AI-powered enterprise platform for rewards, loyalty, and incentive operations. Enables programmatic distribution of digital rewards including gift cards, merchandise, experiences, travel, mobile top-ups, and charitable donations across 150+ countries.",
+  "url": "https://developers.xoxoday.com/docs/overview",
+  "provider": {
+    "@type": "Organization",
+    "name": "Xoxoday",
+    "url": "https://www.xoxoday.com/",
+    "sameAs": [
+      "https://github.com/xoxoday",
+      "https://twitter.com/thexoxoday",
+      "https://www.linkedin.com/company/xoxoday/"
+    ]
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://plum.xoxoday.com/pricing"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Global",
+    "description": "150+ countries"
+  },
+  "documentation": "https://developers.xoxoday.com/docs/overview",
+  "termsOfService": "https://www.xoxoday.com/terms",
+  "category": [
+    "Rewards",
+    "Employee Engagement",
+    "Gift Cards",
+    "Incentives",
+    "Loyalty",
+    "Recognition",
+    "Digital Rewards",
+    "Points Programs",
+    "Redemption",
+    "Fintech"
+  ]
+}

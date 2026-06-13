@@ -1,0 +1,743 @@
+openapi: 3.1.0
+info:
+  title: Xoxoday Plum Rewards API
+  description: >-
+    REST API for programmatic distribution of digital rewards including gift
+    cards, merchandise, experiences, charity donations, lounge access, airmiles,
+    and mobile top-ups across 150+ countries. Supports full reward lifecycle
+    management including catalog browsing, order placement, order tracking, and
+    payment reconciliation. Also provides APIs for reward points distribution,
+    reward links generation, and storefront SSO integration.
+  version: 1.0.0
+  contact:
+    url: https://developers.xoxoday.com/docs/overview
+  termsOfService: https://www.xoxoday.com/terms
+  license:
+    name: Proprietary
+    url: https://www.xoxoday.com/terms
+
+servers:
+  - url: https://accounts.xoxoday.com/chef
+    description: Production server
+  - url: https://stagingstores.xoxoday.com/chef
+    description: Staging / sandbox server
+
+security:
+  - oauth2ClientCredentials: []
+
+tags:
+  - name: Authentication
+    description: Token generation, validation, and refresh
+  - name: Gift Cards
+    description: Browse and order gift card vouchers
+  - name: Orders
+    description: Order placement, tracking, and history
+  - name: Balance
+    description: Account balance retrieval
+  - name: Payments
+    description: Payment report and transaction history
+  - name: Reward Points
+    description: Send, fetch, and cancel reward points
+  - name: Reward Links
+    description: Generate and send personalized reward links
+
+paths:
+
+  /v1/oauth/token:
+    post:
+      operationId: getAccessToken
+      summary: Get Access Token
+      description: >-
+        Obtain an OAuth 2.0 access token using client credentials. The token is
+        required for all subsequent API calls and expires after the duration
+        indicated in the response.
+      tags:
+        - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                    - client_credentials
+                  description: OAuth 2.0 grant type.
+                client_id:
+                  type: string
+                  description: Your API client ID.
+                client_secret:
+                  type: string
+                  description: Your API client secret.
+      responses:
+        '200':
+          description: Access token issued successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+    get:
+      operationId: validateToken
+      summary: Validate Access Token
+      description: Validate the current access token and retrieve its expiry information.
+      tags:
+        - Authentication
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Token is valid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /v1/oauth/api:
+    post:
+      operationId: plumApiDispatch
+      summary: Plum Pro API dispatcher
+      description: >-
+        Single POST endpoint used by the Plum Pro API (gift cards, lounge,
+        airmiles, merchandise, charity, and mobile top-up). The operation is
+        determined by the `query` field in the request body.
+      tags:
+        - Gift Cards
+        - Orders
+        - Balance
+        - Payments
+        - Reward Points
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlumRequest'
+            examples:
+              getFilters:
+                summary: Get Filters
+                value:
+                  query: plumProAPI.mutation.getFilters
+                  tag: plumProAPI
+                  variables:
+                    data:
+                      filterGroupCode: country
+              getVouchers:
+                summary: Get Vouchers (Gift Card Catalog)
+                value:
+                  query: plumProAPI.mutation.getVouchers
+                  tag: plumProAPI
+                  variables:
+                    data:
+                      limit: 10
+                      page: 1
+              getBalance:
+                summary: Get Account Balance
+                value:
+                  query: plumProAPI.query.getBalance
+                  tag: plumProAPI
+                  variables:
+                    data: {}
+              placeOrder:
+                summary: Place Order
+                value:
+                  query: plumProAPI.mutation.placeOrder
+                  tag: plumProAPI
+                  variables:
+                    data:
+                      productId: 1234
+                      quantity: 1
+                      denomination: 500
+                      poNumber: PO-001
+                      notifyReceiverEmail: 1
+                      notifyAdminEmail: 0
+                      email: recipient@example.com
+              getOrderDetails:
+                summary: Get Order Details
+                value:
+                  query: plumProAPI.mutation.getOrderDetails
+                  tag: plumProAPI
+                  variables:
+                    data:
+                      orderId: 98765
+              getOrderHistory:
+                summary: Get Order History
+                value:
+                  query: plumProAPI.mutation.getOrderHistory
+                  tag: plumProAPI
+                  variables:
+                    data:
+                      startDate: '2024-01-01'
+                      endDate: '2024-12-31'
+                      limit: 10
+                      page: 1
+              paymentHistory:
+                summary: Get Payment Report
+                value:
+                  query: plumProAPI.mutation.paymentHistory
+                  tag: plumProAPI
+                  variables:
+                    data:
+                      startDate: '2024-01-01'
+                      endDate: '2024-12-31'
+                      limit: 10
+                      page: 1
+              fetchPoints:
+                summary: Fetch User Points Balance
+                value:
+                  query: storesAdmin.query.user_balance
+                  tag: storeAdmin
+                  variables:
+                    user_data:
+                      email: user@example.com
+              sendPoints:
+                summary: Send Reward Points
+                value:
+                  query: storesAdmin.mutation.sendBalance
+                  tag: storeAdmin
+                  variables:
+                    sender_email: admin@example.com
+                    expiry_month: 12
+                    recipients:
+                      - to_name: Jane Doe
+                        to_email: jane@example.com
+                        amount: '500'
+                        citation: Q4 performance bonus
+              cancelPoints:
+                summary: Cancel Points Transaction
+                value:
+                  query: storesAdmin.mutation.cancelBalance
+                  tag: storeAdmin
+                  variables:
+                    recipients_data:
+                      recipients:
+                        - unique_id: 5758014
+      responses:
+        '200':
+          description: Successful API response (operation-specific payload).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlumResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+
+  /v1/oauth/api/generateLink:
+    post:
+      operationId: generateRewardLink
+      summary: Generate Reward Links
+      description: >-
+        Generate one or more personalized reward links for a campaign. Links can
+        be distributed to recipients via email, SMS, or chat. Recipients do not
+        need a Xoxoday account to redeem.
+      tags:
+        - Reward Links
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - query
+                - tag
+                - variables
+              properties:
+                query:
+                  type: string
+                  enum:
+                    - xoxo_link.mutation.generateLink
+                  description: Fixed operation identifier.
+                tag:
+                  type: string
+                  enum:
+                    - xoxo_link
+                  description: Fixed tag identifier.
+                variables:
+                  type: object
+                  required:
+                    - data
+                  properties:
+                    data:
+                      type: object
+                      required:
+                        - campaignId
+                        - links_quantity
+                        - link_expiry
+                      properties:
+                        campaignId:
+                          type: integer
+                          description: Campaign identifier.
+                        links_quantity:
+                          type: integer
+                          description: Number of reward links to generate.
+                        link_expiry:
+                          type: string
+                          pattern: ^\d{2}-\d{2}-\d{4}$
+                          description: Expiry date in DD-MM-YYYY format.
+                          example: 31-12-2024
+            example:
+              query: xoxo_link.mutation.generateLink
+              tag: xoxo_link
+              variables:
+                data:
+                  campaignId: 7890
+                  links_quantity: 5
+                  link_expiry: 31-12-2024
+      responses:
+        '200':
+          description: Reward links generated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      generateLink:
+                        type: object
+                        properties:
+                          success:
+                            type: integer
+                            description: 1 = success.
+                          message:
+                            type: string
+                          links:
+                            type: array
+                            items:
+                              type: string
+                              format: uri
+                          batchId:
+                            type: string
+                          campaignName:
+                            type: string
+                          campaignId:
+                            type: string
+                          denomination_value:
+                            type: integer
+                          countryName:
+                            type: string
+                          currencyCode:
+                            type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+components:
+
+  securitySchemes:
+    oauth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://accounts.xoxoday.com/chef/v1/oauth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: OAuth 2.0 access token.
+        token_type:
+          type: string
+          enum:
+            - bearer
+        expires_in:
+          type: integer
+          description: Token lifetime in seconds (or epoch expiry timestamp).
+      required:
+        - access_token
+        - token_type
+        - expires_in
+
+    PlumRequest:
+      type: object
+      required:
+        - query
+        - tag
+        - variables
+      properties:
+        query:
+          type: string
+          description: >-
+            Operation selector. Examples: plumProAPI.mutation.getVouchers,
+            plumProAPI.mutation.placeOrder,
+            plumProAPI.mutation.getOrderDetails,
+            plumProAPI.mutation.getOrderHistory,
+            plumProAPI.mutation.paymentHistory,
+            plumProAPI.query.getBalance,
+            plumProAPI.mutation.getFilters,
+            storesAdmin.mutation.sendBalance,
+            storesAdmin.query.user_balance,
+            storesAdmin.mutation.cancelBalance.
+        tag:
+          type: string
+          description: >-
+            API tag group. Use "plumProAPI" for gift card operations or
+            "storeAdmin" for points operations.
+        variables:
+          type: object
+          description: Operation-specific parameters object.
+
+    PlumResponse:
+      type: object
+      description: >-
+        Generic response wrapper. The nested payload depends on the operation
+        invoked via the query field.
+      properties:
+        data:
+          type: object
+          description: Top-level data envelope.
+          properties:
+            getVouchers:
+              $ref: '#/components/schemas/GetVouchersResult'
+            getFilters:
+              $ref: '#/components/schemas/GetFiltersResult'
+            getBalance:
+              $ref: '#/components/schemas/GetBalanceResult'
+            placeOrder:
+              $ref: '#/components/schemas/PlaceOrderResult'
+            getOrderDetails:
+              $ref: '#/components/schemas/GetOrderDetailsResult'
+            paymentHistory:
+              $ref: '#/components/schemas/PaymentHistoryResult'
+            sendBalance:
+              $ref: '#/components/schemas/SendPointsResult'
+            user_balance:
+              $ref: '#/components/schemas/FetchPointsResult'
+            cancelBalance:
+              $ref: '#/components/schemas/CancelPointsResult'
+
+    GetVouchersResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voucher'
+
+    Voucher:
+      type: object
+      properties:
+        productId:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        minValue:
+          type: number
+        maxValue:
+          type: number
+        valueDenominations:
+          type: string
+          description: Comma-separated list of allowed denominations.
+        fee:
+          type: number
+        discount:
+          type: number
+        countryCode:
+          type: string
+        countryName:
+          type: string
+        currencyCode:
+          type: string
+        termsAndConditionsInstructions:
+          type: string
+        expiryAndValidity:
+          type: string
+        deliveryType:
+          type: string
+        tatInDays:
+          type: integer
+        usageType:
+          type: string
+        imageUrl:
+          type: string
+          format: uri
+        loyaltyName:
+          type: string
+        productMeta:
+          type: string
+          description: JSON string with additional product metadata.
+
+    GetFiltersResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              filterGroupName:
+                type: string
+              filterGroupDescription:
+                type: string
+              filterGroupCode:
+                type: string
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    filterValue:
+                      type: string
+                    isoCode:
+                      type: string
+                    filterValueCode:
+                      type: string
+
+    GetBalanceResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: object
+          properties:
+            value:
+              type: number
+              description: Available account balance.
+            currency:
+              type: string
+              description: Currency code (e.g. INR, USD).
+
+    PlaceOrderResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: object
+          properties:
+            orderId:
+              type: integer
+            orderStatus:
+              type: string
+              example: complete
+            deliveryStatus:
+              type: string
+              example: delivered
+            vouchers:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  pin:
+                    type: string
+                  validFrom:
+                    type: string
+                    format: date
+                  validTo:
+                    type: string
+                    format: date
+
+    GetOrderDetailsResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: object
+          properties:
+            orderId:
+              type: integer
+            orderTotal:
+              type: number
+            orderDiscount:
+              type: number
+            discountPercent:
+              type: number
+            currencyCode:
+              type: string
+            amountCharged:
+              type: number
+            orderStatus:
+              type: string
+            deliveryStatus:
+              type: string
+            orderDate:
+              type: string
+              format: date-time
+            deliveryDate:
+              type: string
+              format: date-time
+            quantity:
+              type: integer
+            vouchers:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  pin:
+                    type: string
+                  validFrom:
+                    type: string
+                    format: date
+                  validTo:
+                    type: string
+                    format: date
+
+    PaymentHistoryResult:
+      type: object
+      properties:
+        status:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              invoice_number:
+                type: string
+              reference_id:
+                type: string
+              date:
+                type: string
+                format: date
+              reason:
+                type: string
+              adjusted_amount:
+                type: integer
+              transaction_status:
+                type: string
+                enum:
+                  - Complete
+                  - Cancelled
+              closing_balance:
+                type: integer
+
+    SendPointsResult:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: string
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              unique_id:
+                type: integer
+              points:
+                type: integer
+              name:
+                type: string
+              phone_code:
+                type: string
+              phone_number:
+                type: string
+
+    FetchPointsResult:
+      type: object
+      properties:
+        success:
+          type: integer
+          description: 1 = success, 0 = failure.
+        message:
+          type: string
+          nullable: true
+        data:
+          type: object
+          nullable: true
+          properties:
+            total:
+              type: number
+              description: Total reward points balance.
+
+    CancelPointsResult:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: string
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              unique_id:
+                type: integer
+              success:
+                type: boolean
+              message:
+                type: string
+
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        code:
+          type: string
+        errorId:
+          type: string
+        errorInfo:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Bad request — invalid or missing parameters / authorization failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    UnprocessableEntity:
+      description: Validation error (e.g. duplicate poNumber).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    BadGateway:
+      description: Upstream / internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'

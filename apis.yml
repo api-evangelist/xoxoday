@@ -39,6 +39,8 @@ apis:
         url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
       - type: Webhooks
         url: https://developers.xoxoday.com/docs/overview
+      - type: OpenAPI
+        url: openapi/openapi.yml
 
   - aid: xoxoday:reward-links-api
     name: Xoxoday Reward Links API
