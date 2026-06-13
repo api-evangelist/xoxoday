@@ -1,0 +1,45 @@
+name: Xoxoday Plans and Pricing
+description: Pricing and plans for Xoxoday Plum rewards and incentives API platform. Xoxoday does not publish fixed off-the-shelf tiers; pricing is custom and modeled around each program.
+url: https://plum.xoxoday.com/pricing
+contact: https://www.xoxoday.com/demo
+
+paymentModels:
+  - name: Pay-on-Send
+    description: Users pre-fund a Plum Wallet; wallet recharge equals spend and Xoxoday applies a volume discount. Available via the Rewards Hub dashboard delivery method.
+    notes: Discount level is negotiated and varies by volume.
+
+  - name: Pay-on-Redeem
+    description: A platform fee plus a per-transaction fee applies. Available across all three delivery methods (Rewards Hub, Plum APIs, Plum Storefront).
+    fee: Custom – contact sales for rates.
+
+deliveryMethods:
+  - name: Rewards Hub
+    description: Web dashboard for manually sending rewards without API integration.
+  - name: Plum APIs
+    description: REST APIs for programmatic reward distribution, order management, and reporting.
+  - name: Plum Storefront
+    description: White-labeled hosted reward marketplace reachable via SSO/SAML.
+
+standardFeatures:
+  - 30+ reward categories across 150+ countries
+  - 10M+ reward options (gift cards, merchandise, experiences, travel, charity, mobile top-up)
+  - Email, SMS, WhatsApp reward delivery
+  - Role-based access controls and budget management
+  - Real-time tracking and reporting dashboard
+  - OAuth 2.0 authentication
+  - Webhooks for event-driven integrations
+  - Sandbox / staging environment for testing
+
+optionalAddOns:
+  - Amazon B2B catalog integration
+  - Custom white-label storefront builds
+  - Multi-currency setup
+  - End-user KYC verification
+  - Premium SLAs with dedicated support
+  - On-premise deployment
+
+enterpriseIndicators:
+  - Minimum reported annual spend: $5,000 USD/year (per third-party sources)
+  - Custom contracts negotiated with Xoxoday sales team
+  - Volume discounts available
+  - Enterprise plan includes custom deployment, integrations, and SDKs

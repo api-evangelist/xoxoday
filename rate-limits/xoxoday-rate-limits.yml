@@ -1,0 +1,34 @@
+name: Xoxoday API Rate Limits
+description: Rate limiting information for the Xoxoday Plum Rewards API. Xoxoday does not publicly document specific numeric rate limits in its developer documentation. Known constraints are listed below.
+url: https://developers.xoxoday.com/docs/overview
+
+published: false
+notes: As of June 2026, Xoxoday's public developer documentation references a Rate Limiting concept page but does not disclose specific request-per-second, hourly, or daily quotas. Contact Xoxoday sales or support for contractual rate limit details.
+
+knownConstraints:
+  - name: Order Quantity Per Request
+    description: Each Place Order API call enforces a per-order quantity limit. Example in documentation shows a maximum of 10 vouchers per order.
+    scope: Per API request
+
+  - name: Pagination
+    description: Get Order History API supports limit and page parameters to paginate large result sets.
+    parameters:
+      - limit
+      - page
+
+  - name: Token Expiry
+    description: OAuth 2.0 access tokens expire and must be refreshed using the Refresh Token endpoint. Token lifetime is not specified publicly.
+    endpoints:
+      - Validate Token API
+      - Refresh Token API
+
+  - name: Wallet Balance Gate
+    description: Orders are blocked if the Plum Wallet balance is insufficient to cover the voucher price. Top-up is required before placing the order.
+
+rateLimitDocumentation:
+  url: https://developers.xoxoday.com/docs/overview
+  conceptPage: Rate Limiting (referenced in documentation index, no numeric values disclosed)
+
+contactForLimits:
+  url: https://www.xoxoday.com/support
+  note: Contractual rate limits are defined per enterprise agreement.

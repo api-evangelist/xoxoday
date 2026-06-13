@@ -1,0 +1,51 @@
+name: Xoxoday FinOps
+description: Financial operations guidance for teams using Xoxoday Plum APIs, including cost models, wallet management, and spend controls.
+url: https://plum.xoxoday.com/pricing
+
+costModels:
+  - name: Pay-on-Send
+    description: Pre-fund a Plum Wallet before distributing rewards. Spend equals wallet recharge minus any volume discount received. Best for predictable, budgeted reward programs.
+    considerations:
+      - Unused wallet balance is tied up as prepaid credit
+      - Volume discounts reduce effective cost per reward
+      - Top-up required before funds are depleted to avoid order failures
+
+  - name: Pay-on-Redeem
+    description: Platform fee plus a per-transaction fee charged when recipients redeem rewards. Best for programs where redemption rates are variable or uncertain.
+    considerations:
+      - Platform fee applies regardless of redemption activity
+      - Per-transaction fee scales directly with redemption volume
+      - Unused rewards that are never redeemed do not incur transaction fees
+
+rewardTypeCosts:
+  - category: Gift Cards, Reward Codes, Reward Links
+    fee: Approximately 10% per reward (per third-party reviews)
+  - category: Reward Marketplace and API Integration
+    fee: Approximately 10% per reward plus subscription fees (per third-party reviews)
+  - note: Official fee schedule requires direct negotiation with Xoxoday sales.
+
+spendControls:
+  - Role-based access controls limit who can send rewards and in what amounts
+  - Budget controls can be configured at team or campaign level
+  - Real-time tracking and reporting dashboard for spend visibility
+  - Get Balance API available to programmatically check wallet balance before ordering
+  - Get Payment Report API provides reconciliation data for finance settlements
+
+costOptimizationTips:
+  - Negotiate volume discounts by committing to larger wallet recharges upfront
+  - Use the Sandbox environment to test integrations without consuming production credits
+  - Implement Get Balance API checks in workflows to prevent over-spend
+  - Use Get Payment Report API for automated reconciliation and chargeback prevention
+  - Consider Pay-on-Redeem model for campaigns with historically low redemption rates
+  - Consolidate reward programs to a single Xoxoday account to maximize volume tiers
+
+budgetingRecommendations:
+  - Minimum annual spend indicator from third-party sources: $5,000 USD
+  - Factor in platform/subscription fees plus per-reward fees when modeling total cost
+  - Request itemized pricing from Xoxoday for gift cards, merchandise, experiences, and charity separately as fee structures may differ
+  - Include FX/cross-currency costs if operating in multiple countries
+
+supportContacts:
+  sales: https://www.xoxoday.com/demo
+  support: https://www.xoxoday.com/support
+  documentation: https://developers.xoxoday.com/docs/overview

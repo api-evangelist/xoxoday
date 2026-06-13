@@ -1,0 +1,118 @@
+aid: xoxoday
+name: Xoxoday
+description: Xoxoday is an AI-powered enterprise platform for rewards, loyalty, and incentive operations. Its Plum Rewards API enables organizations to programmatically distribute digital rewards including gift cards, merchandise, experiences, travel, mobile top-ups, and charitable donations across 150+ countries. The platform supports employee recognition workflows, sales incentive programs, customer loyalty campaigns, and channel partner rewards through REST APIs, webhook integrations, and a white-labeled storefront.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/xoxoday/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Rewards
+  - Employee Engagement
+  - Gift Cards
+  - Incentives
+  - Loyalty
+  - Recognition
+  - Digital Rewards
+  - Points Programs
+  - Redemption
+  - Fintech
+
+apis:
+  - aid: xoxoday:plum-rewards-api
+    name: Xoxoday Plum Rewards API
+    description: REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation.
+    humanURL: https://developers.xoxoday.com/docs/overview
+    baseURL: https://accounts.xoxoday.com/chef
+    tags:
+      - Gift Cards
+      - Rewards
+      - Digital Incentives
+      - Merchandise
+      - Experiences
+    properties:
+      - type: Documentation
+        url: https://developers.xoxoday.com/docs/overview
+      - type: Authentication
+        url: https://developers.xoxoday.com/docs/authentication-2
+      - type: Sandbox
+        url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+      - type: Webhooks
+        url: https://developers.xoxoday.com/docs/overview
+
+  - aid: xoxoday:reward-links-api
+    name: Xoxoday Reward Links API
+    description: API for creating and sending personalized reward links via email, SMS, or chat. Supports campaign management, link generation, and link delivery without requiring recipients to have a Xoxoday account.
+    humanURL: https://developers.xoxoday.com/docs/overview
+    baseURL: https://accounts.xoxoday.com/chef
+    tags:
+      - Reward Links
+      - Campaigns
+      - Email
+      - SMS
+    properties:
+      - type: Documentation
+        url: https://developers.xoxoday.com/docs/overview
+      - type: Authentication
+        url: https://developers.xoxoday.com/docs/authentication-2
+
+  - aid: xoxoday:reward-points-api
+    name: Xoxoday Reward Points API
+    description: API for distributing, tracking, and managing loyalty and engagement points programs. Supports sending points to users, canceling points transactions, and fetching points balances for loyalty and recognition workflows.
+    humanURL: https://developers.xoxoday.com/docs/overview
+    baseURL: https://accounts.xoxoday.com/chef
+    tags:
+      - Points
+      - Loyalty
+      - Engagement
+      - Recognition
+    properties:
+      - type: Documentation
+        url: https://developers.xoxoday.com/docs/overview
+      - type: Authentication
+        url: https://developers.xoxoday.com/docs/authentication-copy
+
+  - aid: xoxoday:storefront-integration-api
+    name: Xoxoday Storefront Integration API
+    description: API for embedding a white-labeled reward storefront into existing applications via SSO/SAML. Enables end-users to browse and redeem rewards from a branded marketplace without leaving the host application.
+    humanURL: https://developers.xoxoday.com/docs/overview
+    baseURL: https://accounts.xoxoday.com/chef
+    tags:
+      - Storefront
+      - SSO
+      - SAML
+      - White Label
+      - Redemption
+    properties:
+      - type: Documentation
+        url: https://developers.xoxoday.com/docs/overview
+      - type: Authentication
+        url: https://developers.xoxoday.com/docs/authentication-copy
+
+common:
+  - type: Website
+    url: https://www.xoxoday.com/
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: GitHubOrg
+    url: https://github.com/xoxoday
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/xoxoday/
+  - type: Blog
+    url: https://blog.xoxoday.com/
+  - type: Pricing
+    url: https://plum.xoxoday.com/pricing
+  - type: StatusPage
+    url: https://status.xoxoday.com/
+  - type: X
+    url: https://twitter.com/thexoxoday
+  - type: Plans
+    url: plans/xoxoday-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/xoxoday-rate-limits.yml
+  - type: FinOps
+    url: finops/xoxoday-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
