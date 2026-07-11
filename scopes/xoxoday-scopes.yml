@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: searched
+source: openapi/openapi.yml
+docs: https://xoxoday.gitbook.io/plum/developer-resources/storefront-integration/api-endpoints/authorization
+schemes:
+- name: oauth2ClientCredentials
+  source: openapi/openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://accounts.xoxoday.com/chef/v1/oauth/token
+scopes:
+- scope: user_session
+  description: Company scope used only for the case of Company access_token generation;
+    compulsory when the authorization request is for company session generation.
+  sources:
+  - https://xoxoday.gitbook.io/plum/developer-resources/storefront-integration/api-endpoints/authorization
+- scope: company_session
+  description: Company scope for StoreFront OAuth authorization requests.
+  sources:
+  - https://xoxoday.gitbook.io/plum/developer-resources/storefront-integration/api-endpoints/authorization
+note: Scopes apply to Xoxoday's StoreFront authorization-code OAuth flow; the Rewards
+  API client-credentials flow (https://developers.xoxoday.com/docs/authentication-2)
+  documents no scopes, with access controlled by client credentials and IP whitelisting.

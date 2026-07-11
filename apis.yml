@@ -92,6 +92,10 @@ apis:
         url: https://developers.xoxoday.com/docs/authentication-copy
 
 common:
+  - type: Authentication
+    url: authentication/xoxoday-authentication.yml
+  - type: OAuthScopes
+    url: scopes/xoxoday-scopes.yml
   - type: Website
     url: https://www.xoxoday.com/
   - type: Documentation
