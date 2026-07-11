@@ -92,6 +92,12 @@ apis:
         url: https://developers.xoxoday.com/docs/authentication-copy
 
 common:
+  - type: TrustCenter
+    url: security/xoxoday-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/xoxoday-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/xoxoday-domain-security.yml
   - type: Authentication
     url: authentication/xoxoday-authentication.yml
   - type: OAuthScopes
