@@ -92,6 +92,8 @@ apis:
         url: https://developers.xoxoday.com/docs/authentication-copy
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/xoxoday-agentic-access.yml
   - type: TrustCenter
     url: security/xoxoday-trust-center.yml
   - type: VulnerabilityDisclosure
