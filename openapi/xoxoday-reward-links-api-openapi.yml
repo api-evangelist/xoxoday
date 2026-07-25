@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: Xoxoday Plum Rewards Authentication Reward Links API
+  description: REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups across 150+ countries. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation. Also provides APIs for reward points distribution, reward links generation, and storefront SSO integration.
+  version: 1.0.0
+  contact:
+    url: https://developers.xoxoday.com/docs/overview
+  termsOfService: https://www.xoxoday.com/terms
+  license:
+    name: Proprietary
+    url: https://www.xoxoday.com/terms
+servers:
+- url: https://accounts.xoxoday.com/chef
+  description: Production server
+- url: https://stagingstores.xoxoday.com/chef
+  description: Staging / sandbox server
+security:
+- oauth2ClientCredentials: []
+tags:
+- name: Reward Links
+  description: Generate and send personalized reward links
+paths:
+  /v1/oauth/api/generateLink:
+    post:
+      operationId: generateRewardLink
+      summary: Generate Reward Links
+      description: Generate one or more personalized reward links for a campaign. Links can be distributed to recipients via email, SMS, or chat. Recipients do not need a Xoxoday account to redeem.
+      tags:
+      - Reward Links
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - query
+              - tag
+              - variables
+              properties:
+                query:
+                  type: string
+                  enum:
+                  - xoxo_link.mutation.generateLink
+                  description: Fixed operation identifier.
+                tag:
+                  type: string
+                  enum:
+                  - xoxo_link
+                  description: Fixed tag identifier.
+                variables:
+                  type: object
+                  required:
+                  - data
+                  properties:
+                    data:
+                      type: object
+                      required:
+                      - campaignId
+                      - links_quantity
+                      - link_expiry
+                      properties:
+                        campaignId:
+                          type: integer
+                          description: Campaign identifier.
+                        links_quantity:
+                          type: integer
+                          description: Number of reward links to generate.
+                        link_expiry:
+                          type: string
+                          pattern: ^\d{2}-\d{2}-\d{4}$
+                          description: Expiry date in DD-MM-YYYY format.
+                          example: 31-12-2024
+            example:
+              query: xoxo_link.mutation.generateLink
+              tag: xoxo_link
+              variables:
+                data:
+                  campaignId: 7890
+                  links_quantity: 5
+                  link_expiry: 31-12-2024
+      responses:
+        '200':
+          description: Reward links generated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      generateLink:
+                        type: object
+                        properties:
+                          success:
+                            type: integer
+                            description: 1 = success.
+                          message:
+                            type: string
+                          links:
+                            type: array
+                            items:
+                              type: string
+                              format: uri
+                          batchId:
+                            type: string
+                          campaignName:
+                            type: string
+                          campaignId:
+                            type: string
+                          denomination_value:
+                            type: integer
+                          countryName:
+                            type: string
+                          currencyCode:
+                            type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  responses:
+    BadRequest:
+      description: Bad request — invalid or missing parameters / authorization failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+  schemas:
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        code:
+          type: string
+        errorId:
+          type: string
+        errorInfo:
+          type: string
+  securitySchemes:
+    oauth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://accounts.xoxoday.com/chef/v1/oauth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer

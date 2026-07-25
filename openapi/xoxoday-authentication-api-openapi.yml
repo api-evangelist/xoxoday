@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Xoxoday Plum Rewards Authentication API
+  description: REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups across 150+ countries. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation. Also provides APIs for reward points distribution, reward links generation, and storefront SSO integration.
+  version: 1.0.0
+  contact:
+    url: https://developers.xoxoday.com/docs/overview
+  termsOfService: https://www.xoxoday.com/terms
+  license:
+    name: Proprietary
+    url: https://www.xoxoday.com/terms
+servers:
+- url: https://accounts.xoxoday.com/chef
+  description: Production server
+- url: https://stagingstores.xoxoday.com/chef
+  description: Staging / sandbox server
+security:
+- oauth2ClientCredentials: []
+tags:
+- name: Authentication
+  description: Token generation, validation, and refresh
+paths:
+  /v1/oauth/token:
+    post:
+      operationId: getAccessToken
+      summary: Get Access Token
+      description: Obtain an OAuth 2.0 access token using client credentials. The token is required for all subsequent API calls and expires after the duration indicated in the response.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - client_id
+              - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - client_credentials
+                  description: OAuth 2.0 grant type.
+                client_id:
+                  type: string
+                  description: Your API client ID.
+                client_secret:
+                  type: string
+                  description: Your API client secret.
+      responses:
+        '200':
+          description: Access token issued successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    get:
+      operationId: validateToken
+      summary: Validate Access Token
+      description: Validate the current access token and retrieve its expiry information.
+      tags:
+      - Authentication
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Token is valid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  responses:
+    BadRequest:
+      description: Bad request — invalid or missing parameters / authorization failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: OAuth 2.0 access token.
+        token_type:
+          type: string
+          enum:
+          - bearer
+        expires_in:
+          type: integer
+          description: Token lifetime in seconds (or epoch expiry timestamp).
+      required:
+      - access_token
+      - token_type
+      - expires_in
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        code:
+          type: string
+        errorId:
+          type: string
+        errorInfo:
+          type: string
+  securitySchemes:
+    oauth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://accounts.xoxoday.com/chef/v1/oauth/token
+          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
