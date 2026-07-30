@@ -1,7 +1,19 @@
 aid: xoxoday
 name: Xoxoday
 description: Xoxoday is an AI-powered enterprise platform for rewards, loyalty, and incentive operations. Its Plum Rewards API enables organizations to programmatically distribute digital rewards including gift cards, merchandise, experiences, travel, mobile top-ups, and charitable donations across 150+ countries. The platform supports employee recognition workflows, sales incentive programs, customer loyalty campaigns, and channel partner rewards through REST APIs, webhook integrations, and a white-labeled storefront.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/xoxoday.png
 url: https://raw.githubusercontent.com/api-evangelist/xoxoday/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -19,78 +31,185 @@ tags:
   - Fintech
 
 apis:
-  - aid: xoxoday:plum-rewards-api
-    name: Xoxoday Plum Rewards API
-    description: REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation.
-    humanURL: https://developers.xoxoday.com/docs/overview
-    baseURL: https://accounts.xoxoday.com/chef
-    tags:
-      - Gift Cards
-      - Rewards
-      - Digital Incentives
-      - Merchandise
-      - Experiences
-    properties:
-      - type: Documentation
-        url: https://developers.xoxoday.com/docs/overview
-      - type: Authentication
-        url: https://developers.xoxoday.com/docs/authentication-2
-      - type: Sandbox
-        url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
-      - type: Webhooks
-        url: https://developers.xoxoday.com/docs/overview
-      - type: OpenAPI
-        url: openapi/openapi.yml
-
-  - aid: xoxoday:reward-links-api
-    name: Xoxoday Reward Links API
-    description: API for creating and sending personalized reward links via email, SMS, or chat. Supports campaign management, link generation, and link delivery without requiring recipients to have a Xoxoday account.
-    humanURL: https://developers.xoxoday.com/docs/overview
-    baseURL: https://accounts.xoxoday.com/chef
-    tags:
-      - Reward Links
-      - Campaigns
-      - Email
-      - SMS
-    properties:
-      - type: Documentation
-        url: https://developers.xoxoday.com/docs/overview
-      - type: Authentication
-        url: https://developers.xoxoday.com/docs/authentication-2
-
-  - aid: xoxoday:reward-points-api
-    name: Xoxoday Reward Points API
-    description: API for distributing, tracking, and managing loyalty and engagement points programs. Supports sending points to users, canceling points transactions, and fetching points balances for loyalty and recognition workflows.
-    humanURL: https://developers.xoxoday.com/docs/overview
-    baseURL: https://accounts.xoxoday.com/chef
-    tags:
-      - Points
-      - Loyalty
-      - Engagement
-      - Recognition
-    properties:
-      - type: Documentation
-        url: https://developers.xoxoday.com/docs/overview
-      - type: Authentication
-        url: https://developers.xoxoday.com/docs/authentication-copy
-
-  - aid: xoxoday:storefront-integration-api
-    name: Xoxoday Storefront Integration API
-    description: API for embedding a white-labeled reward storefront into existing applications via SSO/SAML. Enables end-users to browse and redeem rewards from a branded marketplace without leaving the host application.
-    humanURL: https://developers.xoxoday.com/docs/overview
-    baseURL: https://accounts.xoxoday.com/chef
-    tags:
-      - Storefront
-      - SSO
-      - SAML
-      - White Label
-      - Redemption
-    properties:
-      - type: Documentation
-        url: https://developers.xoxoday.com/docs/overview
-      - type: Authentication
-        url: https://developers.xoxoday.com/docs/authentication-copy
-
+- aid: xoxoday:reward-links-api
+  name: Xoxoday Reward Links API
+  description: >-
+    API for creating and sending personalized reward links via email, SMS, or chat. Supports campaign
+    management, link generation, and link delivery without requiring recipients to have a Xoxoday account.
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Reward Links
+  - Campaigns
+  - Email
+  - SMS
+  properties:
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+- aid: xoxoday:reward-points-api
+  name: Xoxoday Reward Points API
+  description: >-
+    API for distributing, tracking, and managing loyalty and engagement points programs. Supports sending
+    points to users, canceling points transactions, and fetching points balances for loyalty and recognition
+    workflows.
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Points
+  - Loyalty
+  - Engagement
+  - Recognition
+  properties:
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-copy
+- aid: xoxoday:storefront-integration-api
+  name: Xoxoday Storefront Integration API
+  description: >-
+    API for embedding a white-labeled reward storefront into existing applications via SSO/SAML. Enables
+    end-users to browse and redeem rewards from a branded marketplace without leaving the host application.
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Storefront
+  - SSO
+  - SAML
+  - White Label
+  - Redemption
+  properties:
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-copy
+- aid: xoxoday:xoxoday-authentication-api
+  name: Xoxoday Authentication API
+  description: Token generation, validation, and refresh
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
+- aid: xoxoday:xoxoday-balance-api
+  name: Xoxoday Balance API
+  description: Account balance retrieval
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Balance
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-balance-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
+- aid: xoxoday:xoxoday-gift-cards-api
+  name: Xoxoday Gift Cards API
+  description: Browse and order gift card vouchers
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Gift Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-gift-cards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
+- aid: xoxoday:xoxoday-orders-api
+  name: Xoxoday Orders API
+  description: Order placement, tracking, and history
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
+- aid: xoxoday:xoxoday-payments-api
+  name: Xoxoday Payments API
+  description: Payment report and transaction history
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
+- aid: xoxoday:xoxoday-reward-links-api
+  name: Xoxoday Reward Links API
+  description: Generate and send personalized reward links
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Reward Links
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-reward-links-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
+- aid: xoxoday:xoxoday-reward-points-api
+  name: Xoxoday Reward Points API
+  description: Send, fetch, and cancel reward points
+  humanURL: https://developers.xoxoday.com/docs/overview
+  baseURL: https://accounts.xoxoday.com/chef
+  tags:
+  - Reward Points
+  properties:
+  - type: OpenAPI
+    url: openapi/xoxoday-reward-points-api-openapi.yml
+  - type: Documentation
+    url: https://developers.xoxoday.com/docs/overview
+  - type: Authentication
+    url: https://developers.xoxoday.com/docs/authentication-2
+  - type: Sandbox
+    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
+  - type: Webhooks
+    url: https://developers.xoxoday.com/docs/overview
 common:
   - type: AgenticAccess
     url: agentic-access/xoxoday-agentic-access.yml
