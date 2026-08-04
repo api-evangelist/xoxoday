@@ -1,0 +1,26 @@
+{
+  "provider": "xoxoday",
+  "sources": [
+    "xoxoday-authentication-api-openapi.yml",
+    "xoxoday-balance-api-openapi.yml",
+    "xoxoday-gift-cards-api-openapi.yml",
+    "xoxoday-orders-api-openapi.yml",
+    "xoxoday-payments-api-openapi.yml",
+    "xoxoday-reward-links-api-openapi.yml",
+    "xoxoday-reward-points-api-openapi.yml"
+  ],
+  "outputs": [
+    "xoxoday-authentication-api-openapi.yml",
+    "xoxoday-balance-api-openapi.yml",
+    "xoxoday-gift-cards-api-openapi.yml",
+    "xoxoday-orders-api-openapi.yml",
+    "xoxoday-payments-api-openapi.yml",
+    "xoxoday-reward-links-api-openapi.yml",
+    "xoxoday-reward-points-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
