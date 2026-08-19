@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xoxoday Plum Rewards Authentication API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://accounts.xoxoday.com/chef/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://accounts.xoxoday.com/chef/v1/oauth/token",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Validate the current access token and retrieve its expiry information."
+        },
+        {
+          "info": {
+            "name": "Get Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.xoxoday.com/chef/v1/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain an OAuth 2.0 access token using client credentials. The token is required for all subsequent API calls and expires after the duration indicated in the response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

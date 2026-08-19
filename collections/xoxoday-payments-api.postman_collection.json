@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "d11c7894-582c-406f-aa94-1fff6bd20c41",
+      "name": "Payments",
+      "description": {
+        "content": "Payment report and transaction history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71563608-feb4-442b-88f8-f4d3ae8d26c7",
+          "name": "Plum Pro API dispatcher",
+          "request": {
+            "name": "Plum Pro API dispatcher",
+            "description": {
+              "content": "Single POST endpoint used by the Plum Pro API (gift cards, lounge, airmiles, merchandise, charity, and mobile top-up). The operation is determined by the `query` field in the request body.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "oauth",
+                "api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"variables\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44cf50bb-c74c-4ab9-8fdc-f060bf099fdc",
+              "name": "Successful API response (operation-specific payload).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"plumProAPI.mutation.getFilters\",\n  \"tag\": \"plumProAPI\",\n  \"variables\": {\n    \"data\": {\n      \"filterGroupCode\": \"country\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"getVouchers\": {\n      \"status\": 6091,\n      \"data\": [\n        {\n          \"productId\": 1107,\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"minValue\": 537.8154280937986,\n          \"maxValue\": 6130.42295539652,\n          \"valueDenominations\": \"string\",\n          \"fee\": 9194.492716616916,\n          \"discount\": 8675.999444802235,\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"termsAndConditionsInstructions\": \"string\",\n          \"expiryAndValidity\": \"string\",\n          \"deliveryType\": \"string\",\n          \"tatInDays\": 2600,\n          \"usageType\": \"string\",\n          \"imageUrl\": \"http://IBdd.xpgWakwCFvRWbyro2,ACJnXVs6UvTvjHMjPrg-gjBvyY+B6OjM9QCazQ99qymS\",\n          \"loyaltyName\": \"string\",\n          \"productMeta\": \"string\"\n        },\n        {\n          \"productId\": 2377,\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"minValue\": 1920.6720399120447,\n          \"maxValue\": 3279.271515980787,\n          \"valueDenominations\": \"string\",\n          \"fee\": 7632.230602149368,\n          \"discount\": 5140.414944494401,\n          \"countryCode\": \"string\",\n          \"countryName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"termsAndConditionsInstructions\": \"string\",\n          \"expiryAndValidity\": \"string\",\n          \"deliveryType\": \"string\",\n          \"tatInDays\": 4884,\n          \"usageType\": \"string\",\n          \"imageUrl\": \"https://iBFRcloIUrhxUYJggyYuDxZyqaTtc.mmffLCpfv5+eqzezT+xC08TBqLY3UKM1mre7NLsTweG65LzDIYm.\",\n          \"loyaltyName\": \"string\",\n          \"productMeta\": \"string\"\n        }\n      ]\n    },\n    \"getFilters\": {\n      \"status\": 9237,\n      \"data\": [\n        {\n          \"filterGroupName\": \"string\",\n          \"filterGroupDescription\": \"string\",\n          \"filterGroupCode\": \"string\",\n          \"filters\": [\n            {\n              \"filterValue\": \"string\",\n              \"isoCode\": \"string\",\n              \"filterValueCode\": \"string\"\n            },\n            {\n              \"filterValue\": \"string\",\n              \"isoCode\": \"string\",\n              \"filterValueCode\": \"string\"\n            }\n          ]\n        },\n        {\n          \"filterGroupName\": \"string\",\n          \"filterGroupDescription\": \"string\",\n          \"filterGroupCode\": \"string\",\n          \"filters\": [\n            {\n              \"filterValue\": \"string\",\n              \"isoCode\": \"string\",\n              \"filterValueCode\": \"string\"\n            },\n            {\n              \"filterValue\": \"string\",\n              \"isoCode\": \"string\",\n              \"filterValueCode\": \"string\"\n            }\n          ]\n        }\n      ]\n    },\n    \"getBalance\": {\n      \"status\": 3431,\n      \"data\": {\n        \"value\": 9351.329532622914,\n        \"currency\": \"string\"\n      }\n    },\n    \"placeOrder\": {\n      \"status\": 8915,\n      \"data\": {\n        \"orderId\": 5731,\n        \"orderStatus\": \"complete\",\n        \"deliveryStatus\": \"delivered\",\n        \"vouchers\": [\n          {\n            \"code\": \"string\",\n            \"pin\": \"string\",\n            \"validFrom\": \"1995-11-20\",\n            \"validTo\": \"2001-05-29\"\n          },\n          {\n            \"code\": \"string\",\n            \"pin\": \"string\",\n            \"validFrom\": \"1988-05-29\",\n            \"validTo\": \"1986-06-18\"\n          }\n        ]\n      }\n    },\n    \"getOrderDetails\": {\n      \"status\": 7693,\n      \"data\": {\n        \"orderId\": 9551,\n        \"orderTotal\": 2157.3692677061595,\n        \"orderDiscount\": 232.13763980366787,\n        \"discountPercent\": 7103.337306874407,\n        \"currencyCode\": \"string\",\n        \"amountCharged\": 3432.4890097321004,\n        \"orderStatus\": \"string\",\n        \"deliveryStatus\": \"string\",\n        \"orderDate\": \"1984-09-27T05:42:46.613Z\",\n        \"deliveryDate\": \"1958-06-24T07:02:07.791Z\",\n        \"quantity\": 6286,\n        \"vouchers\": [\n          {\n            \"code\": \"string\",\n            \"pin\": \"string\",\n            \"validFrom\": \"1992-12-22\",\n            \"validTo\": \"1979-02-10\"\n          },\n          {\n            \"code\": \"string\",\n            \"pin\": \"string\",\n            \"validFrom\": \"1963-08-04\",\n            \"validTo\": \"1960-12-24\"\n          }\n        ]\n      }\n    },\n    \"paymentHistory\": {\n      \"status\": 4253,\n      \"data\": [\n        {\n          \"invoice_number\": \"string\",\n          \"reference_id\": \"string\",\n          \"date\": \"2023-03-21\",\n          \"reason\": \"string\",\n          \"adjusted_amount\": 3500,\n          \"transaction_status\": \"Complete\",\n          \"closing_balance\": 1543\n        },\n        {\n          \"invoice_number\": \"string\",\n          \"reference_id\": \"string\",\n          \"date\": \"1970-10-14\",\n          \"reason\": \"string\",\n          \"adjusted_amount\": 6839,\n          \"transaction_status\": \"Cancelled\",\n          \"closing_balance\": 5779\n        }\n      ]\n    },\n    \"sendBalance\": {\n      \"error\": false,\n      \"message\": \"string\",\n      \"recipients\": [\n        {\n          \"unique_id\": 2860,\n          \"points\": 4468,\n          \"name\": \"string\",\n          \"phone_code\": \"string\",\n          \"phone_number\": \"string\"\n        },\n        {\n          \"unique_id\": 2477,\n          \"points\": 7430,\n          \"name\": \"string\",\n          \"phone_code\": \"string\",\n          \"phone_number\": \"string\"\n        }\n      ]\n    },\n    \"user_balance\": {\n      \"success\": 3378,\n      \"message\": \"string\",\n      \"data\": {\n        \"total\": 8084.049165204599\n      }\n    },\n    \"cancelBalance\": {\n      \"error\": false,\n      \"message\": \"string\",\n      \"recipients\": [\n        {\n          \"unique_id\": 5206,\n          \"success\": false,\n          \"message\": \"string\"\n        },\n        {\n          \"unique_id\": 1753,\n          \"success\": false,\n          \"message\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70ea90bf-8923-41a6-969a-79f5a70e3861",
+              "name": "Bad request — invalid or missing parameters / authorization failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"plumProAPI.mutation.getFilters\",\n  \"tag\": \"plumProAPI\",\n  \"variables\": {\n    \"data\": {\n      \"filterGroupCode\": \"country\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\",\n  \"code\": \"string\",\n  \"errorId\": \"string\",\n  \"errorInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec28bdb1-e0c3-48d8-90a1-b789d6f3028d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"plumProAPI.mutation.getFilters\",\n  \"tag\": \"plumProAPI\",\n  \"variables\": {\n    \"data\": {\n      \"filterGroupCode\": \"country\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\",\n  \"code\": \"string\",\n  \"errorId\": \"string\",\n  \"errorInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "605ef4e3-2331-4b58-b8a7-ce2ad10caf7d",
+              "name": "Validation error (e.g. duplicate poNumber).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"plumProAPI.mutation.getFilters\",\n  \"tag\": \"plumProAPI\",\n  \"variables\": {\n    \"data\": {\n      \"filterGroupCode\": \"country\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\",\n  \"code\": \"string\",\n  \"errorId\": \"string\",\n  \"errorInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "617c035a-0541-4e31-a79d-b40f42615ca9",
+              "name": "Upstream / internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"plumProAPI.mutation.getFilters\",\n  \"tag\": \"plumProAPI\",\n  \"variables\": {\n    \"data\": {\n      \"filterGroupCode\": \"country\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\",\n  \"code\": \"string\",\n  \"errorId\": \"string\",\n  \"errorInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.xoxoday.com/chef",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.xoxoday.com/chef/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e59eca1-ccf2-4e2a-a4a3-7840261cd036",
+    "name": "Xoxoday Plum Rewards Authentication Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups across 150+ countries. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation. Also provides APIs for reward points distribution, reward links generation, and storefront SSO integration.",
+      "type": "text/plain"
+    }
+  }
+}

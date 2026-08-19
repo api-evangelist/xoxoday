@@ -1,0 +1,204 @@
+{
+  "item": [
+    {
+      "id": "4fcaf39b-8f28-4223-aa54-2c0e317dc337",
+      "name": "Reward Links",
+      "description": {
+        "content": "Generate and send personalized reward links",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "23944149-9a42-432f-8493-72c3f9e45d54",
+          "name": "Generate Reward Links",
+          "request": {
+            "name": "Generate Reward Links",
+            "description": {
+              "content": "Generate one or more personalized reward links for a campaign. Links can be distributed to recipients via email, SMS, or chat. Recipients do not need a Xoxoday account to redeem.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "oauth",
+                "api",
+                "generateLink"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"variables\": {\n    \"data\": {\n      \"campaignId\": \"<integer>\",\n      \"links_quantity\": \"<integer>\",\n      \"link_expiry\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d38a58e-a92f-465d-9c21-40a7bd7a9fbf",
+              "name": "Reward links generated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api",
+                    "generateLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"xoxo_link.mutation.generateLink\",\n  \"tag\": \"xoxo_link\",\n  \"variables\": {\n    \"data\": {\n      \"campaignId\": 7890,\n      \"links_quantity\": 5,\n      \"link_expiry\": \"31-12-2024\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"generateLink\": {\n      \"success\": 7180,\n      \"message\": \"string\",\n      \"links\": [\n        \"https://MquWIPzPS.urcmUdpjN\",\n        \"http://cBaE.ntpjbRj10+RWkiUHAxm1A4P\"\n      ],\n      \"batchId\": \"string\",\n      \"campaignName\": \"string\",\n      \"campaignId\": \"string\",\n      \"denomination_value\": 4050,\n      \"countryName\": \"string\",\n      \"currencyCode\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea2d55dc-735c-4819-bc0b-9defef9e23ea",
+              "name": "Bad request — invalid or missing parameters / authorization failure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "oauth",
+                    "api",
+                    "generateLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"xoxo_link.mutation.generateLink\",\n  \"tag\": \"xoxo_link\",\n  \"variables\": {\n    \"data\": {\n      \"campaignId\": 7890,\n      \"links_quantity\": 5,\n      \"link_expiry\": \"31-12-2024\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\",\n  \"code\": \"string\",\n  \"errorId\": \"string\",\n  \"errorInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://accounts.xoxoday.com/chef",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.xoxoday.com/chef/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6cccf1cc-40e2-44ef-a8f8-94b8229fb664",
+    "name": "Xoxoday Plum Rewards Authentication Reward Links API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups across 150+ countries. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation. Also provides APIs for reward points distribution, reward links generation, and storefront SSO integration.",
+      "type": "text/plain"
+    }
+  }
+}

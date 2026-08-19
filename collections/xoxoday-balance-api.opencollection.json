@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xoxoday Plum Rewards Authentication Balance API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://accounts.xoxoday.com/chef/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Balance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Plum Pro API dispatcher",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://accounts.xoxoday.com/chef/v1/oauth/api",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Single POST endpoint used by the Plum Pro API (gift cards, lounge, airmiles, merchandise, charity, and mobile top-up). The operation is determined by the `query` field in the request body."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
