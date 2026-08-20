@@ -27,6 +27,17 @@ tags:
   - Recognition
   - Digital Rewards
   - Points Programs
+  - Redemptions
+  - Fintech
+tags_raw:
+  - Rewards
+  - Employee Engagement
+  - Gift Cards
+  - Incentives
+  - Loyalty
+  - Recognition
+  - Digital Rewards
+  - Points Programs
   - Redemption
   - Fintech
 
@@ -78,6 +89,12 @@ apis:
   - SSO
   - SAML
   - White Label
+  - Redemptions
+  tags_raw:
+  - Storefront
+  - SSO
+  - SAML
+  - White Label
   - Redemption
   properties:
   - type: Documentation
@@ -108,6 +125,8 @@ apis:
   humanURL: https://developers.xoxoday.com/docs/overview
   baseURL: https://accounts.xoxoday.com/chef
   tags:
+  - Balances
+  tags_raw:
   - Balance
   properties:
   - type: OpenAPI
@@ -144,6 +163,8 @@ apis:
   humanURL: https://developers.xoxoday.com/docs/overview
   baseURL: https://accounts.xoxoday.com/chef
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
