@@ -119,26 +119,6 @@ apis:
     url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
   - type: Webhooks
     url: https://developers.xoxoday.com/docs/overview
-- aid: xoxoday:xoxoday-balance-api
-  name: Xoxoday Balance API
-  description: Account balance retrieval
-  humanURL: https://developers.xoxoday.com/docs/overview
-  baseURL: https://accounts.xoxoday.com/chef
-  tags:
-  - Balances
-  tags_raw:
-  - Balance
-  properties:
-  - type: OpenAPI
-    url: openapi/xoxoday-balance-api-openapi.yml
-  - type: Documentation
-    url: https://developers.xoxoday.com/docs/overview
-  - type: Authentication
-    url: https://developers.xoxoday.com/docs/authentication-2
-  - type: Sandbox
-    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
-  - type: Webhooks
-    url: https://developers.xoxoday.com/docs/overview
 - aid: xoxoday:xoxoday-gift-cards-api
   name: Xoxoday Gift Cards API
   description: Browse and order gift card vouchers
@@ -157,44 +137,6 @@ apis:
     url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
   - type: Webhooks
     url: https://developers.xoxoday.com/docs/overview
-- aid: xoxoday:xoxoday-orders-api
-  name: Xoxoday Orders API
-  description: Order placement, tracking, and history
-  humanURL: https://developers.xoxoday.com/docs/overview
-  baseURL: https://accounts.xoxoday.com/chef
-  tags:
-  - Order
-  tags_raw:
-  - Orders
-  properties:
-  - type: OpenAPI
-    url: openapi/xoxoday-orders-api-openapi.yml
-  - type: Documentation
-    url: https://developers.xoxoday.com/docs/overview
-  - type: Authentication
-    url: https://developers.xoxoday.com/docs/authentication-2
-  - type: Sandbox
-    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
-  - type: Webhooks
-    url: https://developers.xoxoday.com/docs/overview
-- aid: xoxoday:xoxoday-payments-api
-  name: Xoxoday Payments API
-  description: Payment report and transaction history
-  humanURL: https://developers.xoxoday.com/docs/overview
-  baseURL: https://accounts.xoxoday.com/chef
-  tags:
-  - Payments
-  properties:
-  - type: OpenAPI
-    url: openapi/xoxoday-payments-api-openapi.yml
-  - type: Documentation
-    url: https://developers.xoxoday.com/docs/overview
-  - type: Authentication
-    url: https://developers.xoxoday.com/docs/authentication-2
-  - type: Sandbox
-    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
-  - type: Webhooks
-    url: https://developers.xoxoday.com/docs/overview
 - aid: xoxoday:xoxoday-reward-links-api
   name: Xoxoday Reward Links API
   description: Generate and send personalized reward links
@@ -205,24 +147,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/xoxoday-reward-links-api-openapi.yml
-  - type: Documentation
-    url: https://developers.xoxoday.com/docs/overview
-  - type: Authentication
-    url: https://developers.xoxoday.com/docs/authentication-2
-  - type: Sandbox
-    url: https://developers.xoxoday.com/docs/rewards-api-standard-workflow
-  - type: Webhooks
-    url: https://developers.xoxoday.com/docs/overview
-- aid: xoxoday:xoxoday-reward-points-api
-  name: Xoxoday Reward Points API
-  description: Send, fetch, and cancel reward points
-  humanURL: https://developers.xoxoday.com/docs/overview
-  baseURL: https://accounts.xoxoday.com/chef
-  tags:
-  - Reward Points
-  properties:
-  - type: OpenAPI
-    url: openapi/xoxoday-reward-points-api-openapi.yml
   - type: Documentation
     url: https://developers.xoxoday.com/docs/overview
   - type: Authentication
