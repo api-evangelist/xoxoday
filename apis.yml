@@ -1,6 +1,18 @@
 aid: xoxoday
 name: Xoxoday
 description: Xoxoday is an AI-powered enterprise platform for rewards, loyalty, and incentive operations. Its Plum Rewards API enables organizations to programmatically distribute digital rewards including gift cards, merchandise, experiences, travel, mobile top-ups, and charitable donations across 150+ countries. The platform supports employee recognition workflows, sales incentive programs, customer loyalty campaigns, and channel partner rewards through REST APIs, webhook integrations, and a white-labeled storefront.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
