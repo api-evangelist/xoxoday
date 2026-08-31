@@ -39,7 +39,7 @@ tags:
   - Recognition
   - Digital Rewards
   - Points Programs
-  - Redemptions
+  - Redemption
   - Fintech
 tags_raw:
   - Rewards
@@ -101,7 +101,7 @@ apis:
   - SSO
   - SAML
   - White Label
-  - Redemptions
+  - Redemption
   tags_raw:
   - Storefront
   - SSO
