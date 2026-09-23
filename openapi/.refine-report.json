@@ -1,26 +1,25 @@
 {
   "provider": "xoxoday",
   "sources": [
-    "xoxoday-authentication-api-openapi.yml",
-    "xoxoday-balance-api-openapi.yml",
-    "xoxoday-gift-cards-api-openapi.yml",
-    "xoxoday-orders-api-openapi.yml",
-    "xoxoday-payments-api-openapi.yml",
-    "xoxoday-reward-links-api-openapi.yml",
-    "xoxoday-reward-points-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
     "xoxoday-authentication-api-openapi.yml",
-    "xoxoday-balance-api-openapi.yml",
     "xoxoday-gift-cards-api-openapi.yml",
-    "xoxoday-orders-api-openapi.yml",
-    "xoxoday-payments-api-openapi.yml",
-    "xoxoday-reward-links-api-openapi.yml",
-    "xoxoday-reward-points-api-openapi.yml"
+    "xoxoday-reward-links-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openapi.yml: multi-axis tagging (7 tags, 3 first tags, 2.00x duplication over 4 operations) \u2014 split on first tag, 1 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "xoxoday-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "xoxoday-gift-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "xoxoday-reward-links-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

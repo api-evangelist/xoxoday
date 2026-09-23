@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Xoxoday Plum Rewards Authentication Reward Links API
+  title: Xoxoday Plum Rewards Reward Links API
   description: REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups across 150+ countries. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation. Also provides APIs for reward points distribution, reward links generation, and storefront SSO integration.
   version: 1.0.0
   contact:
