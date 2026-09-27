@@ -41,6 +41,7 @@ tags:
   - Points Programs
   - Redemptions
   - Fintech
+  - Loyalty & Incentives
 tags_raw:
   - Rewards
   - Employee Engagement
@@ -52,6 +53,7 @@ tags_raw:
   - Points Programs
   - Redemption
   - Fintech
+  - Loyalty & Incentives
 
 apis:
 - aid: xoxoday:reward-links-api

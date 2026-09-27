@@ -149,154 +149,6 @@ paths:
           $ref: '#/components/responses/BadGateway'
 components:
   schemas:
-    PlumResponse:
-      type: object
-      description: Generic response wrapper. The nested payload depends on the operation invoked via the query field.
-      properties:
-        data:
-          type: object
-          description: Top-level data envelope.
-          properties:
-            getVouchers:
-              $ref: '#/components/schemas/GetVouchersResult'
-            getFilters:
-              $ref: '#/components/schemas/GetFiltersResult'
-            getBalance:
-              $ref: '#/components/schemas/GetBalanceResult'
-            placeOrder:
-              $ref: '#/components/schemas/PlaceOrderResult'
-            getOrderDetails:
-              $ref: '#/components/schemas/GetOrderDetailsResult'
-            paymentHistory:
-              $ref: '#/components/schemas/PaymentHistoryResult'
-            sendBalance:
-              $ref: '#/components/schemas/SendPointsResult'
-            user_balance:
-              $ref: '#/components/schemas/FetchPointsResult'
-            cancelBalance:
-              $ref: '#/components/schemas/CancelPointsResult'
-    Voucher:
-      type: object
-      properties:
-        productId:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        minValue:
-          type: number
-        maxValue:
-          type: number
-        valueDenominations:
-          type: string
-          description: Comma-separated list of allowed denominations.
-        fee:
-          type: number
-        discount:
-          type: number
-        countryCode:
-          type: string
-        countryName:
-          type: string
-        currencyCode:
-          type: string
-        termsAndConditionsInstructions:
-          type: string
-        expiryAndValidity:
-          type: string
-        deliveryType:
-          type: string
-        tatInDays:
-          type: integer
-        usageType:
-          type: string
-        imageUrl:
-          type: string
-          format: uri
-        loyaltyName:
-          type: string
-        productMeta:
-          type: string
-          description: JSON string with additional product metadata.
-    GetVouchersResult:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: 1 = success.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Voucher'
-    CancelPointsResult:
-      type: object
-      properties:
-        error:
-          type: boolean
-        message:
-          type: string
-        recipients:
-          type: array
-          items:
-            type: object
-            properties:
-              unique_id:
-                type: integer
-              success:
-                type: boolean
-              message:
-                type: string
-    GetFiltersResult:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: 1 = success.
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              filterGroupName:
-                type: string
-              filterGroupDescription:
-                type: string
-              filterGroupCode:
-                type: string
-              filters:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    filterValue:
-                      type: string
-                    isoCode:
-                      type: string
-                    filterValueCode:
-                      type: string
-    SendPointsResult:
-      type: object
-      properties:
-        error:
-          type: boolean
-        message:
-          type: string
-        recipients:
-          type: array
-          items:
-            type: object
-            properties:
-              unique_id:
-                type: integer
-              points:
-                type: integer
-              name:
-                type: string
-              phone_code:
-                type: string
-              phone_number:
-                type: string
     FetchPointsResult:
       type: object
       properties:
@@ -328,6 +180,19 @@ components:
             currency:
               type: string
               description: Currency code (e.g. INR, USD).
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        code:
+          type: string
+        errorId:
+          type: string
+        errorInfo:
+          type: string
     PlumRequest:
       type: object
       required:
@@ -344,19 +209,74 @@ components:
         variables:
           type: object
           description: Operation-specific parameters object.
-    ApiError:
+    SendPointsResult:
       type: object
       properties:
         error:
+          type: boolean
+        message:
           type: string
-        error_description:
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              unique_id:
+                type: integer
+              points:
+                type: integer
+              name:
+                type: string
+              phone_code:
+                type: string
+              phone_number:
+                type: string
+    PaymentHistoryResult:
+      type: object
+      properties:
+        status:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              invoice_number:
+                type: string
+              reference_id:
+                type: string
+              date:
+                type: string
+                format: date
+              reason:
+                type: string
+              adjusted_amount:
+                type: integer
+              transaction_status:
+                type: string
+                enum:
+                - Complete
+                - Cancelled
+              closing_balance:
+                type: integer
+    CancelPointsResult:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
           type: string
-        code:
-          type: string
-        errorId:
-          type: string
-        errorInfo:
-          type: string
+        recipients:
+          type: array
+          items:
+            type: object
+            properties:
+              unique_id:
+                type: integer
+              success:
+                type: boolean
+              message:
+                type: string
     GetOrderDetailsResult:
       type: object
       properties:
@@ -405,6 +325,114 @@ components:
                   validTo:
                     type: string
                     format: date
+    PlumResponse:
+      type: object
+      description: Generic response wrapper. The nested payload depends on the operation invoked via the query field.
+      properties:
+        data:
+          type: object
+          description: Top-level data envelope.
+          properties:
+            getVouchers:
+              $ref: '#/components/schemas/GetVouchersResult'
+            getFilters:
+              $ref: '#/components/schemas/GetFiltersResult'
+            getBalance:
+              $ref: '#/components/schemas/GetBalanceResult'
+            placeOrder:
+              $ref: '#/components/schemas/PlaceOrderResult'
+            getOrderDetails:
+              $ref: '#/components/schemas/GetOrderDetailsResult'
+            paymentHistory:
+              $ref: '#/components/schemas/PaymentHistoryResult'
+            sendBalance:
+              $ref: '#/components/schemas/SendPointsResult'
+            user_balance:
+              $ref: '#/components/schemas/FetchPointsResult'
+            cancelBalance:
+              $ref: '#/components/schemas/CancelPointsResult'
+    GetFiltersResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              filterGroupName:
+                type: string
+              filterGroupDescription:
+                type: string
+              filterGroupCode:
+                type: string
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    filterValue:
+                      type: string
+                    isoCode:
+                      type: string
+                    filterValueCode:
+                      type: string
+    GetVouchersResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voucher'
+    Voucher:
+      type: object
+      properties:
+        productId:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        minValue:
+          type: number
+        maxValue:
+          type: number
+        valueDenominations:
+          type: string
+          description: Comma-separated list of allowed denominations.
+        fee:
+          type: number
+        discount:
+          type: number
+        countryCode:
+          type: string
+        countryName:
+          type: string
+        currencyCode:
+          type: string
+        termsAndConditionsInstructions:
+          type: string
+        expiryAndValidity:
+          type: string
+        deliveryType:
+          type: string
+        tatInDays:
+          type: integer
+        usageType:
+          type: string
+        imageUrl:
+          type: string
+          format: uri
+        loyaltyName:
+          type: string
+        productMeta:
+          type: string
+          description: JSON string with additional product metadata.
     PlaceOrderResult:
       type: object
       properties:
@@ -437,34 +465,6 @@ components:
                   validTo:
                     type: string
                     format: date
-    PaymentHistoryResult:
-      type: object
-      properties:
-        status:
-          type: integer
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              invoice_number:
-                type: string
-              reference_id:
-                type: string
-              date:
-                type: string
-                format: date
-              reason:
-                type: string
-              adjusted_amount:
-                type: integer
-              transaction_status:
-                type: string
-                enum:
-                - Complete
-                - Cancelled
-              closing_balance:
-                type: integer
   responses:
     BadRequest:
       description: Bad request — invalid or missing parameters / authorization failure.
@@ -472,14 +472,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
-    NotFound:
-      description: The requested resource was not found.
+    UnprocessableEntity:
+      description: Validation error (e.g. duplicate poNumber).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
-    UnprocessableEntity:
-      description: Validation error (e.g. duplicate poNumber).
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
