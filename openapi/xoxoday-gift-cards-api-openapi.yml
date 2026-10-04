@@ -149,20 +149,7 @@ paths:
           $ref: '#/components/responses/BadGateway'
 components:
   schemas:
-    ApiError:
-      type: object
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
-        code:
-          type: string
-        errorId:
-          type: string
-        errorInfo:
-          type: string
-    GetBalanceResult:
+    GetOrderDetailsResult:
       type: object
       properties:
         status:
@@ -171,12 +158,45 @@ components:
         data:
           type: object
           properties:
-            value:
+            orderId:
+              type: integer
+            orderTotal:
               type: number
-              description: Available account balance.
-            currency:
+            orderDiscount:
+              type: number
+            discountPercent:
+              type: number
+            currencyCode:
               type: string
-              description: Currency code (e.g. INR, USD).
+            amountCharged:
+              type: number
+            orderStatus:
+              type: string
+            deliveryStatus:
+              type: string
+            orderDate:
+              type: string
+              format: date-time
+            deliveryDate:
+              type: string
+              format: date-time
+            quantity:
+              type: integer
+            vouchers:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  pin:
+                    type: string
+                  validFrom:
+                    type: string
+                    format: date
+                  validTo:
+                    type: string
+                    format: date
     PlaceOrderResult:
       type: object
       properties:
@@ -209,34 +229,44 @@ components:
                   validTo:
                     type: string
                     format: date
-    GetFiltersResult:
+    PlumRequest:
+      type: object
+      required:
+      - query
+      - tag
+      - variables
+      properties:
+        query:
+          type: string
+          description: 'Operation selector. Examples: plumProAPI.mutation.getVouchers, plumProAPI.mutation.placeOrder, plumProAPI.mutation.getOrderDetails, plumProAPI.mutation.getOrderHistory, plumProAPI.mutation.paymentHistory, plumProAPI.query.getBalance, plumProAPI.mutation.getFilters, storesAdmin.mutation.sendBalance, storesAdmin.query.user_balance, storesAdmin.mutation.cancelBalance.'
+        tag:
+          type: string
+          description: API tag group. Use "plumProAPI" for gift card operations or "storeAdmin" for points operations.
+        variables:
+          type: object
+          description: Operation-specific parameters object.
+    SendPointsResult:
       type: object
       properties:
-        status:
-          type: integer
-          description: 1 = success.
-        data:
+        error:
+          type: boolean
+        message:
+          type: string
+        recipients:
           type: array
           items:
             type: object
             properties:
-              filterGroupName:
+              unique_id:
+                type: integer
+              points:
+                type: integer
+              name:
                 type: string
-              filterGroupDescription:
+              phone_code:
                 type: string
-              filterGroupCode:
+              phone_number:
                 type: string
-              filters:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    filterValue:
-                      type: string
-                    isoCode:
-                      type: string
-                    filterValueCode:
-                      type: string
     PaymentHistoryResult:
       type: object
       properties:
@@ -265,6 +295,49 @@ components:
                 - Cancelled
               closing_balance:
                 type: integer
+    GetFiltersResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              filterGroupName:
+                type: string
+              filterGroupDescription:
+                type: string
+              filterGroupCode:
+                type: string
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    filterValue:
+                      type: string
+                    isoCode:
+                      type: string
+                    filterValueCode:
+                      type: string
+    GetBalanceResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: object
+          properties:
+            value:
+              type: number
+              description: Available account balance.
+            currency:
+              type: string
+              description: Currency code (e.g. INR, USD).
     Voucher:
       type: object
       properties:
@@ -327,6 +400,45 @@ components:
                 type: boolean
               message:
                 type: string
+    GetVouchersResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: 1 = success.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voucher'
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        code:
+          type: string
+        errorId:
+          type: string
+        errorInfo:
+          type: string
+    FetchPointsResult:
+      type: object
+      properties:
+        success:
+          type: integer
+          description: 1 = success, 0 = failure.
+        message:
+          type: string
+          nullable: true
+        data:
+          type: object
+          nullable: true
+          properties:
+            total:
+              type: number
+              description: Total reward points balance.
     PlumResponse:
       type: object
       description: Generic response wrapper. The nested payload depends on the operation invoked via the query field.
@@ -353,119 +465,13 @@ components:
               $ref: '#/components/schemas/FetchPointsResult'
             cancelBalance:
               $ref: '#/components/schemas/CancelPointsResult'
-    FetchPointsResult:
-      type: object
-      properties:
-        success:
-          type: integer
-          description: 1 = success, 0 = failure.
-        message:
-          type: string
-          nullable: true
-        data:
-          type: object
-          nullable: true
-          properties:
-            total:
-              type: number
-              description: Total reward points balance.
-    SendPointsResult:
-      type: object
-      properties:
-        error:
-          type: boolean
-        message:
-          type: string
-        recipients:
-          type: array
-          items:
-            type: object
-            properties:
-              unique_id:
-                type: integer
-              points:
-                type: integer
-              name:
-                type: string
-              phone_code:
-                type: string
-              phone_number:
-                type: string
-    GetVouchersResult:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: 1 = success.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Voucher'
-    GetOrderDetailsResult:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: 1 = success.
-        data:
-          type: object
-          properties:
-            orderId:
-              type: integer
-            orderTotal:
-              type: number
-            orderDiscount:
-              type: number
-            discountPercent:
-              type: number
-            currencyCode:
-              type: string
-            amountCharged:
-              type: number
-            orderStatus:
-              type: string
-            deliveryStatus:
-              type: string
-            orderDate:
-              type: string
-              format: date-time
-            deliveryDate:
-              type: string
-              format: date-time
-            quantity:
-              type: integer
-            vouchers:
-              type: array
-              items:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  pin:
-                    type: string
-                  validFrom:
-                    type: string
-                    format: date
-                  validTo:
-                    type: string
-                    format: date
-    PlumRequest:
-      type: object
-      required:
-      - query
-      - tag
-      - variables
-      properties:
-        query:
-          type: string
-          description: 'Operation selector. Examples: plumProAPI.mutation.getVouchers, plumProAPI.mutation.placeOrder, plumProAPI.mutation.getOrderDetails, plumProAPI.mutation.getOrderHistory, plumProAPI.mutation.paymentHistory, plumProAPI.query.getBalance, plumProAPI.mutation.getFilters, storesAdmin.mutation.sendBalance, storesAdmin.query.user_balance, storesAdmin.mutation.cancelBalance.'
-        tag:
-          type: string
-          description: API tag group. Use "plumProAPI" for gift card operations or "storeAdmin" for points operations.
-        variables:
-          type: object
-          description: Operation-specific parameters object.
   responses:
+    UnprocessableEntity:
+      description: Validation error (e.g. duplicate poNumber).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
     BadGateway:
       description: Upstream / internal server error.
       content:
@@ -474,12 +480,6 @@ components:
             $ref: '#/components/schemas/ApiError'
     BadRequest:
       description: Bad request — invalid or missing parameters / authorization failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-    UnprocessableEntity:
-      description: Validation error (e.g. duplicate poNumber).
       content:
         application/json:
           schema:
