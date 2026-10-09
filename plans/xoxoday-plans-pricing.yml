@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Xoxoday Plans and Pricing
 description: Pricing and plans for Xoxoday Plum rewards and incentives API platform. Xoxoday does not publish fixed off-the-shelf tiers; pricing is custom and modeled around each program.
 url: https://plum.xoxoday.com/pricing
