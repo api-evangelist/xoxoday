@@ -77,6 +77,13 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
+  responses:
+    BadRequest:
+      description: Bad request — invalid or missing parameters / authorization failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
   schemas:
     ApiError:
       type: object
@@ -108,13 +115,6 @@ components:
       - access_token
       - token_type
       - expires_in
-  responses:
-    BadRequest:
-      description: Bad request — invalid or missing parameters / authorization failure.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
   securitySchemes:
     oauth2ClientCredentials:
       type: oauth2
