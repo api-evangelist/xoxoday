@@ -8,6 +8,7 @@ checked:
 - https://zapier.com/api/v4/apps/
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
+- hubspot/integrations/hubspot-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -68,6 +69,36 @@ edges:
     builder: unknown (not in the directory record)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Cloud Security Alliance STAR Registry
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cloudsecurityalliance.org/star/registry/nreach-online-services-pvt-ltd-xoxoday/services/nreach-online-services-pvt-ltd-xoxoday
+  category: Cloud security assurance
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: Nreach Online Services Pvt Ltd ( Xoxoday )
+    registry_id: nreach-online-services-pvt-ltd-xoxoday
+    service_url: https://www.xoxoday.com
+    matched_domain: xoxoday.com
+    matched_by: domain
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  detected_by: sweep-compliance-assurance.py
+  first_seen: '2026-10-20'
 - partner_name: Google Workspace (own)
   partner: google-workspace
   partner_match: mirror
@@ -121,35 +152,22 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Slack app
-- partner_name: Cloud Security Alliance STAR Registry
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://cloudsecurityalliance.org/star/registry/nreach-online-services-pvt-ltd-xoxoday/services/nreach-online-services-pvt-ltd-xoxoday
-  category: Cloud security assurance
-  contract_reference:
-    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
-    spec_file: null
-    standard: CSA STAR
-    role: star-level-1
-    registered_name: Nreach Online Services Pvt Ltd ( Xoxoday )
-    registry_id: nreach-online-services-pvt-ltd-xoxoday
-    service_url: https://www.xoxoday.com
-    matched_domain: xoxoday.com
-    matched_by: domain
-    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
-    levels:
-    - STAR Level 1
-    certified_products: []
-    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
-      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
-      = every instance marked (Deprecated) by the registry; service counts never recorded
-    detected_by: sweep-compliance-assurance.py
-    detected: '2026-10-20'
-  detected_by: sweep-compliance-assurance.py
-  first_seen: '2026-10-20'
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/xoxoday-plum-226124
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - Xoxoday
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: MARKETING_AUTOMATION
 source:
 - https://zapier.com/api/v4/apps/
