@@ -1,4 +1,4 @@
-# Xoxoday (xoxoday)
+# Xoxoday
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,124 +66,141 @@
 
 Xoxoday is an AI-powered enterprise platform for rewards, loyalty, and incentive operations. Its Plum Rewards API enables organizations to programmatically distribute digital rewards including gift cards, merchandise, experiences, travel, mobile top-ups, and charitable donations across 150+ countries. The platform supports employee recognition workflows, sales incentive programs, customer loyalty campaigns, and channel partner rewards through REST APIs, webhook integrations, and a white-labeled storefront.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/xoxoday/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/xoxoday/refs/heads/main/apis.yml)
+**Areas:** Rewards · Employee Engagement · Gift Cards · Incentives · Loyalty · Recognition · Digital Rewards · Points Programs · Redemptions · Fintech · Loyalty & Incentives
 
-## Tags
+## Xoxoday on APIs.io
 
-- Rewards
-- Employee Engagement
-- Gift Cards
-- Incentives
-- Loyalty
-- Recognition
-- Digital Rewards
-- Points Programs
-- Redemption
-- Fintech
+Everything profiled for Xoxoday is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/xoxoday/](https://apis.io/providers/xoxoday/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+- [Xoxoday Reward Links API](https://apis.io/apis/xoxoday/reward-links-api/) — API for creating and sending personalized reward links via email, SMS, or chat. Supports campaign management, link generation, and link delivery without…
+- [Xoxoday Reward Points API](https://apis.io/apis/xoxoday/reward-points-api/) — API for distributing, tracking, and managing loyalty and engagement points programs. Supports sending points to users, canceling points transactions, and…
+- [Xoxoday Storefront Integration API](https://apis.io/apis/xoxoday/storefront-integration-api/) — API for embedding a white-labeled reward storefront into existing applications via SSO/SAML. Enables end-users to browse and redeem rewards from a branded…
+- [Xoxoday Authentication API](https://apis.io/apis/xoxoday/xoxoday-authentication-api/) — Token generation, validation, and refresh
+- [Xoxoday Gift Cards API](https://apis.io/apis/xoxoday/xoxoday-gift-cards-api/) — Browse and order gift card vouchers
+- [Xoxoday Reward Links API](https://apis.io/apis/xoxoday/xoxoday-reward-links-api/) — Generate and send personalized reward links
 
-## APIs
+### Published properties
 
-### Xoxoday Plum Rewards API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-REST API for programmatic distribution of digital rewards including gift cards, merchandise, experiences, charity donations, lounge access, airmiles, and mobile top-ups. Supports full reward lifecycle management including catalog browsing, order placement, order tracking, and payment reconciliation.
+#### Agentic access (1)
 
-- **Human URL:** [https://developers.xoxoday.com/docs/overview](https://developers.xoxoday.com/docs/overview)
-- **Base URL:** `https://accounts.xoxoday.com/chef`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Xoxoday Agentic Access](https://apis.io/agentic-access/xoxoday/xoxoday-agentic-access/)
 
-- Gift Cards
-- Rewards
-- Digital Incentives
-- Merchandise
-- Experiences
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://developers.xoxoday.com/docs/overview)
-- [Authentication](https://developers.xoxoday.com/docs/authentication-2)
-- [Sandbox](https://developers.xoxoday.com/docs/rewards-api-standard-workflow)
-- [Webhooks](https://developers.xoxoday.com/docs/overview)
-- [OpenAPI](openapi/openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Xoxoday Context](https://apis.io/jsonld/xoxoday/xoxoday/)
 
-### Xoxoday Reward Links API
+#### Collections (7)
 
-API for creating and sending personalized reward links via email, SMS, or chat. Supports campaign management, link generation, and link delivery without requiring recipients to have a Xoxoday account.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://developers.xoxoday.com/docs/overview](https://developers.xoxoday.com/docs/overview)
-- **Base URL:** `https://accounts.xoxoday.com/chef`
+- [Xoxoday Plum Rewards Authentication API](https://apis.io/collections/xoxoday/open-xoxoday-authentication-api/)
+- [Xoxoday Plum Rewards Authentication Balance API](https://apis.io/collections/xoxoday/open-xoxoday-balance-api/)
+- [Xoxoday Plum Rewards Authentication Gift Cards API](https://apis.io/collections/xoxoday/open-xoxoday-gift-cards-api/)
+- [Xoxoday Plum Rewards Authentication Orders API](https://apis.io/collections/xoxoday/open-xoxoday-orders-api/)
+- [Xoxoday Plum Rewards Authentication Payments API](https://apis.io/collections/xoxoday/open-xoxoday-payments-api/)
+- [Xoxoday Plum Rewards Authentication Reward Links API](https://apis.io/collections/xoxoday/open-xoxoday-reward-links-api/)
+- [Xoxoday Plum Rewards Authentication Reward Points API](https://apis.io/collections/xoxoday/open-xoxoday-reward-points-api/)
 
-#### Tags
+#### Security (4)
 
-- Reward Links
-- Campaigns
-- Email
-- SMS
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Xoxoday Authentication](https://apis.io/security/xoxoday/xoxoday-authentication/)
+- [Xoxoday Domain Security](https://apis.io/security/xoxoday/xoxoday-domain-security/)
+- [Xoxoday Trust Center](https://apis.io/security/xoxoday/xoxoday-trust-center/)
+- [Xoxoday Vulnerability Disclosure](https://apis.io/security/xoxoday/xoxoday-vulnerability-disclosure/)
 
-- [Documentation](https://developers.xoxoday.com/docs/overview)
-- [Authentication](https://developers.xoxoday.com/docs/authentication-2)
+#### OAuth scopes (1)
 
-### Xoxoday Reward Points API
+The permissions the API asks for.
 
-API for distributing, tracking, and managing loyalty and engagement points programs. Supports sending points to users, canceling points transactions, and fetching points balances for loyalty and recognition workflows.
+- [Xoxoday Scopes](https://apis.io/scopes/xoxoday/xoxoday-scopes/)
 
-- **Human URL:** [https://developers.xoxoday.com/docs/overview](https://developers.xoxoday.com/docs/overview)
-- **Base URL:** `https://accounts.xoxoday.com/chef`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Points
-- Loyalty
-- Engagement
-- Recognition
+- [Xoxoday Plans Pricing](https://apis.io/plans/xoxoday/xoxoday-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://developers.xoxoday.com/docs/overview)
-- [Authentication](https://developers.xoxoday.com/docs/authentication-copy)
+Published request limits.
 
-### Xoxoday Storefront Integration API
+- [Xoxoday Rate Limits](https://apis.io/rate-limits/xoxoday/xoxoday-rate-limits/)
 
-API for embedding a white-labeled reward storefront into existing applications via SSO/SAML. Enables end-users to browse and redeem rewards from a branded marketplace without leaving the host application.
+#### FinOps (1)
 
-- **Human URL:** [https://developers.xoxoday.com/docs/overview](https://developers.xoxoday.com/docs/overview)
-- **Base URL:** `https://accounts.xoxoday.com/chef`
+What the API costs to run, by operation.
 
-#### Tags
+- [Xoxoday Finops](https://apis.io/finops/xoxoday/xoxoday-finops/)
 
-- Storefront
-- SSO
-- SAML
-- White Label
-- Redemption
+## Where to find this API
 
-#### Properties
-
-- [Documentation](https://developers.xoxoday.com/docs/overview)
-- [Authentication](https://developers.xoxoday.com/docs/authentication-copy)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.xoxoday.com/)
 - [Documentation](https://developers.xoxoday.com/docs/overview)
-- [Git Hub Org](https://github.com/xoxoday)
-- [LinkedIn](https://www.linkedin.com/company/xoxoday/)
-- [Blog](https://blog.xoxoday.com/)
 - [Pricing](https://plum.xoxoday.com/pricing)
-- [Status Page](https://status.xoxoday.com/)
-- [X (Twitter)](https://twitter.com/thexoxoday)
-- [Plans](plans/xoxoday-plans-pricing.yml)
-- [Rate Limits](rate-limits/xoxoday-rate-limits.yml)
-- [Fin Ops](finops/xoxoday-finops.yml)
+- [Blog](https://blog.xoxoday.com/)
+- [Status](https://status.xoxoday.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 55.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 13.2 |
+
+**Agent readiness 31.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 33.9** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/xoxoday/](https://apis.io/providers/xoxoday/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Xoxoday: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/xoxoday/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
